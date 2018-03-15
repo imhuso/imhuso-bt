@@ -1,0 +1,22 @@
+version: '2.1'
+services:
+  ### Ubuntu 服务器 #######################################
+  centos-bt:
+    build: ./centos-bt
+    container_name: imhuso-bt
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3306:3306"
+      - "6379:6379"
+      - "8888:8888"
+    #extra_hosts:
+    #  - "${IMHUSO_DOMAIN}:${LOCAL_HOST_IP}"
+    env_file:
+      - .env 
+    tty: true   
+    #volumes:
+      #- "/Volumes/MacFile/Web:/www/wwwroot"
+      #- "/Volumes/MacFile/Backup:/www/backup"
+      #- "/Volumes/MacFile/Logs:/www/wwwlogs"
+      #- "/Volumes/MacFile/BT/panel:/www/server/panel"

@@ -1,4 +1,4 @@
-FROM imhuso/bt:1.0
+FROM registry-internal.cn-shenzhen.aliyuncs.com/imhuso/bt:1.0
 
 MAINTAINER imhuso <imhuso@126.com>
 

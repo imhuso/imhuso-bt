@@ -1,18 +1,13 @@
-FROM centos:7.4.1708
+FROM imhuso/bt:1.0
 
 MAINTAINER imhuso <imhuso@126.com>
 
-USER root
+WORKDIR /www/server/panel/install
 
-COPY ./start.sh /start.sh
-
-RUN yum install -y wget \
-    && wget -O install.sh http://download.bt.cn/install/install.sh \
-    && sed -i 's/read -p "Do you want to install Bt-Panel to the $setup_path directory now?(y\/n): " go;/go="y"/g' install.sh \
-    && sed -i 's/password=`cat \/dev\/urandom | head -n 16 | md5sum | head -c 8`/password="xiaoming@515"/g' install.sh \
-    && sh install.sh \
-    && chmod +x /start.sh
-
-EXPOSE 80 88 443 3306 6378 8888
+RUN chmod +x *.sh \
+	&& bash install_soft.sh 1 install nginx 1.12.2 \
+	&& bash install_soft.sh 1 install mysql 5.6.37 \
+	&& bash install_soft.sh 1 install php 7.2.3 \
+	&& bash install_soft.sh 1 install phpmyadmin 4.7
 
 CMD ["/start.sh"]

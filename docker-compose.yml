@@ -1,0 +1,17 @@
+version: '2.1'
+services:
+  imhuso-bt:
+    build: ./centos-bt
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3306:3306"
+      - "6379:6379"
+      - "8888:8888"
+    #extra_hosts:
+    #  - "${IMHUSO_DOMAIN}:${LOCAL_HOST_IP}"
+    #env_file:
+    #  - .env 
+    tty: true   
+    volumes:
+      - "./www:/www"

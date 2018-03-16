@@ -1,7 +1,8 @@
 version: '2.1'
 services:
   imhuso-bt:
-    build: ./centos-bt
+    #build: ./centos-bt
+    image: registry.cn-shenzhen.aliyuncs.com/imhuso/bt:1.0
     ports:
       - "80:80"
       - "443:443"
@@ -13,5 +14,5 @@ services:
     #env_file:
     #  - .env 
     tty: true   
-    volumes:
-      - "./www:/www"
+    #volumes:
+    #  - "./www:/www"
